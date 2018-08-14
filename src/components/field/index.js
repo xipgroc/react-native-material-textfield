@@ -267,9 +267,12 @@ export default class TextField extends PureComponent {
     }
 
     this.setState({
-      height: Math.max(
-        fontSize * 1.5,
-        Math.ceil(height) + Platform.select({ ios: 5, android: 1 })
+      height: Math.min(
+        Math.max(
+          fontSize * 1.5,
+          Math.ceil(height) + Platform.select({ ios: 5, android: 1 }),
+        ),
+        maxHeight + Platform.select({ ios: 5, android: 1 })
       ),
     });
   }
